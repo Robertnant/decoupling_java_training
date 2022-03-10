@@ -11,7 +11,7 @@ public class HumanPlayer implements Player {
     @Override
     public long askNextGuess() {
         logger.log("Enter a number to guess:");
-        
+
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
 
