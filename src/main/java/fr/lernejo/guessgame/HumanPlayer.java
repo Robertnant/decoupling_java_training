@@ -1,12 +1,11 @@
 package fr.lernejo.guessgame;
 
-import fr.lernejo.logger.LoggerFactory;
+import fr.lernejo.logger.*;
 
 import java.util.Scanner;
-import java.util.logging.Logger;
 
 public class HumanPlayer implements Player {
-    private final fr.lernejo.logger.Logger logger = LoggerFactory.getLogger("player");
+    private final Logger logger = LoggerFactory.getLogger("player");
 
     @Override
     public long askNextGuess() {
