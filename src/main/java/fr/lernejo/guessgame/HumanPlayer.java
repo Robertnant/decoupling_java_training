@@ -6,15 +6,21 @@ import java.util.Scanner;
 
 public class HumanPlayer implements Player {
     private final Logger logger = LoggerFactory.getLogger("player");
+    private final Scanner scanner = new Scanner(System.in);
 
     @Override
     public long askNextGuess() {
         logger.log("Enter a number to guess:");
 
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
+        do {
+            String input = scanner.nextLine();
+            try {
+                return Long.parseLong(input);
+            } catch (NumberFormatException e) {
+                logger.log("Please enter a valid number:");
+            }
+        } while (true);
 
-        return scanner.nextLong();
     }
 
     @Override
