@@ -36,9 +36,9 @@ public class Simulation {
     public void loopUntilPlayerSucceed(long maxIterations) {
         long start = System.currentTimeMillis();
 
-        while (maxIterations != 0 && nextRound()) {
+        do {
             maxIterations -= 1;
-        }
+        } while (maxIterations > 0 && nextRound() == false);
 
         if (maxIterations == 0)
             logger.log("Sorry you ran out of tries. Better luck next time...");

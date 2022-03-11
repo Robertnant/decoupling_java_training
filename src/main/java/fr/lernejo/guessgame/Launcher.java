@@ -8,19 +8,19 @@ public class Launcher {
             throw new IllegalArgumentException("Missing argument: -interactive or -auto");
         }
 
-        Simulation simulation = null;
+        final Simulation simulation;
         long maxIterations = Long.MAX_VALUE;
 
-        if (args[0] == "-interactive") {
+        if (args[0].equals("-interactive")) {
             simulation = new Simulation(new HumanPlayer());
 
             // Generate random number between Long.MIN_VALUE and Long.MAX_VALUE
             SecureRandom random = new SecureRandom();
-            long randomNumber = random.nextLong();
+            long randomNumber = random.nextInt(100);
 
             simulation.initialize(randomNumber);
         }
-        else if (args[0] == "-auto") {
+        else if (args[0].equals("-auto")) {
             if (args.length != 2) {
                 throw new IllegalArgumentException("No number to guess was given in -auto mode");
             }
