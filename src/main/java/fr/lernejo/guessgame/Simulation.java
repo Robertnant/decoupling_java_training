@@ -28,10 +28,7 @@ public class Simulation {
             return true;
         }
 
-        if (guess > numberToGuess)
-            player.respond(true);
-        else
-            player.respond(false);
+        player.respond(guess > numberToGuess);
 
         return false;
     }
