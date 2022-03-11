@@ -4,6 +4,10 @@ import java.security.SecureRandom;
 
 public class Launcher {
     public static void main(String[] args) {
+        if (args.length == 0) {
+            throw new IllegalArgumentException("Missing argument: -interactive or -auto");
+        }
+
         Simulation simulation = null;
         long maxIterations = Long.MAX_VALUE;
 
@@ -17,12 +21,16 @@ public class Launcher {
             simulation.initialize(randomNumber);
         }
         else if (args[0] == "-auto") {
+            if (args.length != 2) {
+                throw new IllegalArgumentException("No number to guess was given in -auto mode");
+            }
+
             simulation = new Simulation(new ComputerPlayer());
             maxIterations = 1000;
             simulation.initialize(Long.parseLong(args[1]));
         }
         else {
-            System.out.println("Option passed was not recognized. Try one of these two: -interactive or -auto");
+            throw new IllegalArgumentException("Invalid mode: " + args[0]);
         }
 
         simulation.loopUntilPlayerSucceed(maxIterations);
